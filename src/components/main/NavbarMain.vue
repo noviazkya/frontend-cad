@@ -124,4 +124,4 @@ export default {
 .menu-item:nth-child(4) {
   animation-delay: 0.4s;
 }
-</style>
+</style> 
