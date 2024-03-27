@@ -90,6 +90,43 @@ const collections = {
           return false;
         }
       },
+      async updateCollections({ commit }, { uuid, formData }) {
+        try {
+          commit("SET_LOADING", true);
+  
+          const token = localStorage.getItem("token");
+          const response = await axios.put(`/collections/update/${uuid}`, formData, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "multipart/form-data",
+            },
+          });
+  
+          commit("SET_LOADING", false);
+  
+          ElMessage({
+            type: "success",
+            message: "Collection Update successfully!",
+          });
+  
+          return response.data;
+        } catch (error) {
+          console.error("Error Update Collection:", error);
+  
+          // Periksa apakah error.response terdefinisi sebelum mencoba mengakses properti 'data'
+          const errorMessage = error.response
+            ? error.response.data.msg
+            : "An error occurred while Update the Collection. Please try again.";
+  
+          ElMessage({
+            type: "error",
+            message: "Failed to Update collection: " + errorMessage,
+          });
+  
+          commit("SET_LOADING", false);
+          return false;
+        }
+      },
   },
   mutations: {
     SET_COLLECTIONS(state, collections) {

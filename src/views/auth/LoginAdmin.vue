@@ -5,7 +5,7 @@
       <form @submit.prevent="loginAdmin" class="py-8 px-8 md:px-12 bg-white rounded-2xl shadow-xl z-20">
         <div>
           <h1 class="text-3xl font-bold text-center mb-4 cursor-pointer">Login Admin</h1>
-          <p class="w-80 text-center text-sm mb-8 font-semibold text-gray-700 tracking-wide cursor-pointer">Create an account to enjoy all the services without any ads for free!</p>
+          <p class="w-80 text-center text-sm mb-8 font-semibold text-gray-700 tracking-wide cursor-pointer">enter admin email and password</p>
         </div>
         <div class="space-y-4">
           <input type="email" v-model="auth.email" placeholder="Email Address" class="block text-sm py-3 px-4 rounded-lg w-full border outline-purple-500" />

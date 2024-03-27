@@ -7,6 +7,7 @@ import HomeAdmin from "../views/admin/HomeAdmin.vue";
 import CollectionAdmin from "../views/admin/CollectionAdmin.vue";
 import DetailCollections from "../views/admin/DetailCollections.vue";
 import CreateCollections from "../views/admin/CreateCollections.vue";
+import EditCollections from "../views/admin/EditCollections.vue";
 
 import store from "../store";
 
@@ -93,6 +94,14 @@ const router = createRouter({
           name: "CreateCollections",
           meta: {
             title: "collection - create",
+          },
+        },
+        {
+          path: "/admin/collection/edit/:uuid",
+          component: EditCollections,
+          name: "EditCollections",
+          meta: {
+            title: "collection - Edit",
           },
         },
       ],
