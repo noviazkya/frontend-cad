@@ -26,7 +26,7 @@
           <td class="px-4 py-2" :class="{ 'bg-gray-200': index % 2 !== 0 }">{{ collection.date }}</td>
           <td class="px-4 py-2" :class="{ 'bg-gray-200': index % 2 !== 0 }">
             <button class="bg-blue-500 text-white px-2 py-1 rounded-md hover:bg-blue-600 focus:outline-none" @click="EditItem(collection)">Edit</button>
-            <button class="bg-red-500 text-white px-2 py-1 rounded-md hover:bg-red-600 focus:outline-none">Delete</button>
+            <button class="bg-red-500 text-white px-2 py-1 rounded-md hover:bg-red-600 focus:outline-none" @click="deleteItem(collection)">Delete</button>
             <button class="bg-green-500 text-white px-2 py-1 rounded-md hover:bg-green-600 focus:outline-none" @click="viewItem(collection)">view</button>
           </td>
         </tr>
@@ -46,6 +46,7 @@
 </template>
 
 <script>
+import { ElMessage, ElMessageBox } from "element-plus";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
@@ -54,6 +55,9 @@ export default {
       currentPage: 1,
       pageSize: 10,
     };
+  },
+  components:{
+    ElMessageBox
   },
   computed: {
     ...mapGetters('collections', ['getCollections']),
@@ -79,6 +83,32 @@ export default {
       this.$router.push({
         path: `/admin/collection/edit/${uuid}`,
       });
+    },
+    async deleteItem(item) {
+      try {
+        const confirmed = await ElMessageBox.confirm(
+          "Are you sure you want to delete this collection?",
+          "Confirmation",
+          {
+            type: "warning",
+            confirmButtonText: "Delete",
+            cancelButtonText: "Cancel",
+            center: true,
+          }
+        );
+
+        if (confirmed) {
+          // Dispatch action deleteCollection dengan item.uuid sebagai payload
+          await this.$store.dispatch("collections/deleteCollection", item.uuid);
+          this.fetchCollections();
+        } else {
+          // Jika pengguna membatalkan penghapusan, tampilkan pesan bahwa penghapusan dibatalkan
+          ElMessage.info("Deletion canceled");
+        }
+      } catch (error) {
+        // Handle jika terjadi kesalahan saat penghapusan
+        ElMessage.error(`Failed to delete collection: ${error.response.data.msg}`);
+      }
     },
     toCreateCollection() {
       this.$router.push('/admin/collection/create')

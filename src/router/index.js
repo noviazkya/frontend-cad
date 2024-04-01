@@ -1,7 +1,7 @@
 import { createWebHistory, createRouter } from "vue-router";
 import LoginAdmin from "../views/auth/LoginAdmin.vue";
 import MainLayout from "../layouts/MainLayout.vue";
-import Main from "../views/main/Main.vue";
+import HomeMain from "../views/main/HomeMain.vue";
 import AdminLayout from "../layouts/AdminLayout.vue";
 import HomeAdmin from "../views/admin/HomeAdmin.vue";
 import CollectionAdmin from "../views/admin/CollectionAdmin.vue";
@@ -46,8 +46,8 @@ const router = createRouter({
       children: [
         {
           path: "/",
-          component: Main,
-          name: "Main",
+          component: HomeMain,
+          name: "HomeMain",
           meta: {
             title: "home",
           },
@@ -103,7 +103,7 @@ const router = createRouter({
           meta: {
             title: "collection - Edit",
           },
-        },
+        }
       ],
     },
   ],
@@ -116,12 +116,13 @@ router.beforeEach(async (to, from, next) => {
     // Redirect ke halaman login jika diperlukan login dan pengguna tidak terautentikasi
     next("/admin/login");
   } else if (to.meta.requiresGuest && isAuthenticated) {
-    // Redirect ke halaman utama jika pengguna sudah login dan mencoba mengakses halaman login
-    next("/");
+    // Redirect ke halaman dashboard jika pengguna sudah login dan mencoba mengakses halaman login
+    next("/admin/dashboard");
   } else {
     // Continue with navigation
     next();
   }
 });
+
 
 export default router;

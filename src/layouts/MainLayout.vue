@@ -1,15 +1,30 @@
 <template>
-<div>
+  <div>
     <NavbarMain></NavbarMain>
-    <router-view></router-view>
-</div>
+    <div class="mt-16" :class="{ 'overflow-hidden': !showContent }">
+      <router-view></router-view>
+    </div>
+  </div>
 </template>
+
 <script>
 import NavbarMain from '../components/main/NavbarMain.vue';
 
 export default {
-    components:{
-        NavbarMain
-    }
-}
+  components: {
+    NavbarMain
+  },
+  data() {
+    return {
+      showContent: true
+    };
+  }
+};
 </script>
+
+<style>
+.overflow-hidden {
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+</style>

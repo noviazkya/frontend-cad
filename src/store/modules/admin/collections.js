@@ -90,12 +90,31 @@ const collections = {
           return false;
         }
       },
+      async deleteCollection({ commit }, uuid) {
+        try {
+          const token = localStorage.getItem("token");
+          const response = await axios.delete(`/collections/delete/${uuid}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+  
+          ElMessage.success(response.data.msg);
+        } catch (error) {
+          console.error("Error deleting collection:", error.response.data.msg);
+          ElMessage.error(
+            "Failed to delete collection: " +
+              (error.response.data.msg ||
+                "An error occurred while deleting the collection. Please try again.")
+          );
+        }
+      },
       async updateCollections({ commit }, { uuid, formData }) {
         try {
           commit("SET_LOADING", true);
   
           const token = localStorage.getItem("token");
-          const response = await axios.put(`/collections/update/${uuid}`, formData, {
+          const response = await axios.patch(`/collections/update/${uuid}`, formData, {
             headers: {
               Authorization: `Bearer ${token}`,
               "Content-Type": "multipart/form-data",
