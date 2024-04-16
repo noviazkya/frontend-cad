@@ -8,6 +8,7 @@ import CollectionAdmin from "../views/admin/CollectionAdmin.vue";
 import DetailCollections from "../views/admin/DetailCollections.vue";
 import CreateCollections from "../views/admin/CreateCollections.vue";
 import EditCollections from "../views/admin/EditCollections.vue";
+import DetailCollectionsMain from "../views/main/DetailCollectionsMain.vue";
 
 import store from "../store";
 
@@ -50,6 +51,14 @@ const router = createRouter({
           name: "HomeMain",
           meta: {
             title: "home",
+          },
+        },
+        {
+          path: "/c/:collectionName/:uuid",
+          component: DetailCollectionsMain,
+          name: "DetailCollectionsMain",
+          meta: {
+            title: "detail collection",
           },
         },
       ],
