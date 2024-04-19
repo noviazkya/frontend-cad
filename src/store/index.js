@@ -1,6 +1,7 @@
 import { createStore } from "vuex";
 import auth from "./modules/auth/auth";
-import collections from "./modules/admin/collections.js"
+import collections from "./modules/admin/collections.js";
+import informations from "./modules/admin/informations.js";
 
 const store = createStore({
     state: {
@@ -8,7 +9,8 @@ const store = createStore({
     },
     modules: {
     auth,
-    collections
+    collections,
+    informations
     },  
 });
 

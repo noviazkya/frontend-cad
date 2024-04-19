@@ -1,11 +1,6 @@
 <template>
   <div class="container mx-auto">
-    <div class="flex justify-between items-center mb-4">
-      <input
-        type="search"
-        placeholder="Search"
-        class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-      />
+    <div class="flex justify-between items-center -right-5 mb-4 mt-2 mx-2">
       <button type="button" @click="toCreateCollection" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none">
         Add
       </button>

@@ -9,6 +9,9 @@ import DetailCollections from "../views/admin/DetailCollections.vue";
 import CreateCollections from "../views/admin/CreateCollections.vue";
 import EditCollections from "../views/admin/EditCollections.vue";
 import DetailCollectionsMain from "../views/main/DetailCollectionsMain.vue";
+import InformationAdmin from "../views/admin/InformationAdmin.vue";
+import DetailInformation from "../views/admin/DetailInformation.vue";
+import CreateInformation from "../views/admin/CreateInformation.vue";
 
 import store from "../store";
 
@@ -112,7 +115,31 @@ const router = createRouter({
           meta: {
             title: "collection - Edit",
           },
-        }
+        },
+        {
+          path: "/admin/information",
+          component: InformationAdmin,
+          name: "InformationAdmin",
+          meta: {
+            title: "Information",
+          },
+        },
+        {
+          path: "/admin/information/:uuid",
+          component: DetailInformation,
+          name: "DetailInformation",
+          meta: {
+            title: "Information",
+          },
+        },
+        {
+          path: "/admin/information/create",
+          component: CreateInformation,
+          name: "CreateInformation",
+          meta: {
+            title: "information - create",
+          },
+        },
       ],
     },
   ],

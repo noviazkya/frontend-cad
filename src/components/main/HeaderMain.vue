@@ -2,7 +2,7 @@
   <div class="relative">
     <!-- Header dengan gambar full-page -->
     <div class="absolute inset-0 z-10">
-      <img src="../../assets/images/headers.jpg" alt="Header Image" class="w-full h-[690px] object-cover relative sm:h-[660px] md:h-[670px] lg:h-[680px] xl:h-[690px]">
+      <img src="../../assets/images/bg.jpg" alt="Header Image" class="w-full h-[690px] object-cover relative sm:h-[500px] md:h-[670px] lg:h-[500px] xl:h-[690px]">
     </div>
 
     <!-- Teks sambutan di pojok bawah kiri -->

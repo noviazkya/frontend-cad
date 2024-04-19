@@ -1,6 +1,6 @@
 <template>
 <!-- component -->
-<div class="mt-[24rem] flex items-end w-full min-h-screen bg-white">
+<div :class="{ 'mt-[30rem]': isHomePage, 'mt-0': !isHomePage }" class="flex items-end w-full min-h-screen bg-white">
 
 <footer class="w-full text-gray-700 bg-gray-100 body-font">
     <div
@@ -52,7 +52,7 @@
                         <a class="text-gray-500 cursor-pointer hover:text-gray-900">Company</a>
                     </li>
                     <li class="mt-3">
-                        <a class="text-gray-500 cursor-pointer hover:text-gray-900">Careers</a>
+                        <a class="text-gray-500 cursor-pointer hover:text-gray-900">Careers</a>;
                     </li>
                     <li class="mt-3">
                         <a class="text-gray-500 cursor-pointer hover:text-gray-900">Blog</a>
@@ -99,3 +99,17 @@
 
 </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      isHomePage: false
+    };
+  },
+  created() {
+    // Check if current route is home page
+    this.isHomePage = this.$route.path === '/';
+  }
+};
+</script>

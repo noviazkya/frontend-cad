@@ -1,20 +1,20 @@
 <template>
   <div class="container mx-auto px-4 py-8">
     <div class="max-w-4xl mx-auto">
-      <h1 class="text-3xl font-bold mb-4">Tambah Koleksi</h1>
+      <h1 class="text-3xl font-bold mb-4">Add Colection</h1>
       <el-form :model="form" :rules="rules" ref="collectionForm" label-width="120px"
         @submit.prevent="submitForm">
-        <el-form-item label="Judul" prop="title">
+        <el-form-item label="Title" prop="title">
           <el-input v-model="form.title"></el-input>
         </el-form-item>
-        <el-form-item label="Pembuat" prop="creator">
+        <el-form-item label="Creator" prop="creator">
           <el-input v-model="form.creator"></el-input>
         </el-form-item>
-        <el-form-item label="Tanggal" prop="date">
+        <el-form-item label="Date release" prop="date">
           <el-date-picker v-model="form.date" type="date" format="YYYY/MM/DD" value-format="YYYY-MM-DD"
-            placeholder="Pilih tanggal"></el-date-picker>
+            placeholder="Choose date"></el-date-picker>
         </el-form-item>
-        <el-form-item label="Deskripsi" prop="description">
+        <el-form-item label="Description" prop="description">
           <el-input v-model="form.description" type="textarea"></el-input>
         </el-form-item>
         <label
@@ -119,6 +119,7 @@ export default {
         creator: [{ required: true, message: 'Pembuat diperlukan', trigger: 'blur' }],
         date: [{ required: true, message: 'Tanggal diperlukan', trigger: 'blur' }],
         description: [{ required: true, message: 'Deskripsi diperlukan', trigger: 'blur' }],
+        address: [{ required: true, message: 'Alamat diperlukan', trigger: 'blur' }],
         inputFile: [{ required: true, message: 'Gambar diperlukan', trigger: 'blur' }],
       },
       isLoading: false,
