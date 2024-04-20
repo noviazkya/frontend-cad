@@ -6,7 +6,7 @@
           <el-form-item label="Title" prop="title">
             <el-input v-model="form.title"></el-input>
           </el-form-item>
-          <el-form-item label="Opening" prop="opening">
+          <el-form-item label="Subtitle" prop="subtitle">
             <el-input v-model="form.opening"></el-input>
           </el-form-item>
           <!-- Category dropdown -->

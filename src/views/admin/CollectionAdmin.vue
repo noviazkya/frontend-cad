@@ -1,6 +1,7 @@
 <template>
   <div class="container mx-auto">
-    <div class="flex justify-between items-center -right-5 mb-4 mt-2 mx-2">
+    <h2 class="mb-3 text-3xl font-semibold ml-2 mt-2">Colletions</h2>
+    <div class=" mb-4 mt-2 mx-2">
       <button type="button" @click="toCreateCollection" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none">
         Add
       </button>
