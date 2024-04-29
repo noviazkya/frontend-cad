@@ -109,12 +109,12 @@ const informations = {
           );
         }
       },
-      async updateCollections({ commit }, { uuid, formData }) {
+      async updateInfomation({ commit }, { uuid, formData })  {
         try {
           commit("SET_LOADING", true);
   
           const token = localStorage.getItem("token");
-          const response = await axios.patch(`/collections/update/${uuid}`, formData, {
+          const response = await axios.put(`/information/update/${uuid}`, formData, {
             headers: {
               Authorization: `Bearer ${token}`,
               "Content-Type": "multipart/form-data",
@@ -125,17 +125,17 @@ const informations = {
   
           ElMessage({
             type: "success",
-            message: "Collection Update successfully!",
+            message: "information Update successfully!",
           });
   
           return response.data;
         } catch (error) {
-          console.error("Error Update Collection:", error);
+          console.error("Error Update information:", error);
   
           // Periksa apakah error.response terdefinisi sebelum mencoba mengakses properti 'data'
           const errorMessage = error.response
             ? error.response.data.msg
-            : "An error occurred while Update the Collection. Please try again.";
+            : "An error occurred while Update the information. Please try again.";
   
           ElMessage({
             type: "error",
@@ -151,8 +151,8 @@ const informations = {
     SET_INFORMATION(state, informations) {
       state.information = informations
     },
-    SET_INFORMATION_BYID(state, collection) {
-      state.information = collection
+    SET_INFORMATION_BYID(state, informations) {
+      state.information = informations
     },
     SET_LOADING(state, isLoading) {
       state.isLoading = isLoading;

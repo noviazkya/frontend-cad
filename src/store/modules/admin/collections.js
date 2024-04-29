@@ -114,7 +114,7 @@ const collections = {
           commit("SET_LOADING", true);
   
           const token = localStorage.getItem("token");
-          const response = await axios.patch(`/collections/update/${uuid}`, formData, {
+          const response = await axios.put(`/collections/update/${uuid}`, formData, {
             headers: {
               Authorization: `Bearer ${token}`,
               "Content-Type": "multipart/form-data",

@@ -77,7 +77,7 @@
       EditItem(item) {
         const uuid = item.uuid;
         this.$router.push({
-          path: `/admin/collection/edit/${uuid}`,
+          path: `/admin/information/edit/${uuid}`,
         });
       },
       async deleteItem(item) {

@@ -1,6 +1,6 @@
 <template>
 <!-- component -->
-<div :class="{ 'mt-[30rem]': isHomePage, 'mt-0': !isHomePage }" class="flex items-end w-full min-h-screen bg-white">
+<div :class="{ 'mt-auto': !isHomePage, 'mt-[30rem]': isHomePage }" class="flex items-end w-full min-h-screen bg-white">
 
 <footer class="w-full text-gray-700 bg-gray-100 body-font">
     <div
@@ -104,12 +104,14 @@
 export default {
   data() {
     return {
-      isHomePage: false
+      isHomePage: this.$route.path === '/'
     };
   },
-  created() {
-    // Check if current route is home page
-    this.isHomePage = this.$route.path === '/';
+  watch: {
+    '$route.path'(newPath, oldPath) {
+      this.isHomePage = newPath === '/';
+    }
   }
 };
+
 </script>

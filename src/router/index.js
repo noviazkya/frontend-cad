@@ -12,6 +12,12 @@ import DetailCollectionsMain from "../views/main/DetailCollectionsMain.vue";
 import InformationAdmin from "../views/admin/InformationAdmin.vue";
 import DetailInformation from "../views/admin/DetailInformation.vue";
 import CreateInformation from "../views/admin/CreateInformation.vue";
+import EditInformation from "../views/admin/EditInformation.vue";
+import BlogMain from "../views/main/BlogMain.vue";
+import ContactMain from "../views/main/ContactMain.vue";
+import GalleryMain from "../views/main/GalleryMain.vue";
+import InfomationDetailMain from "../views/main/InfomationDetailMain.vue";
+
 
 import store from "../store";
 
@@ -62,6 +68,38 @@ const router = createRouter({
           name: "DetailCollectionsMain",
           meta: {
             title: "detail collection",
+          },
+        },
+        {
+          path: "/blog",
+          component: BlogMain,
+          name: "BlogMain",
+          meta: {
+            title: "Blog",
+          },
+        },
+        {
+          path: "/contact",
+          component: ContactMain,
+          name: "ContactMain",
+          meta: {
+            title: "Contact",
+          },
+        },
+        {
+          path: "/gallery",
+          component: GalleryMain,
+          name: "GalleryMain",
+          meta: {
+            title: "Gallery",
+          },
+        },
+        {
+          path: "/i/:informationName/:uuid",
+          component: InfomationDetailMain,
+          name: "InfomationDetailMain",
+          meta: {
+            title: "information collection",
           },
         },
       ],
@@ -140,6 +178,14 @@ const router = createRouter({
             title: "information - create",
           },
         },
+        {
+          path: "/admin/information/edit/:uuid",
+          component: EditInformation,
+          name: "EditInformation",
+          meta: {
+            title: "information - Edit",
+          },
+        },
       ],
     },
   ],
@@ -158,6 +204,7 @@ router.beforeEach(async (to, from, next) => {
     // Continue with navigation
     next();
   }
+  document.title = "Contemporary - " + (to.meta.title || "Default Text")
 });
 
 

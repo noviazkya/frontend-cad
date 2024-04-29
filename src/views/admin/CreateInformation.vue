@@ -12,7 +12,7 @@
           <!-- Category dropdown -->
         <el-form-item label="Category" prop="category">
           <el-select v-model="form.category" placeholder="Select category">
-            <el-option v-for="category in categories" :key="category.id" :label="category.name" :value="category.id"></el-option>
+            <el-option v-for="category in categories" :key="category.id" :label="category.name" :value="category.name"></el-option>
           </el-select>
         </el-form-item>
           <el-form-item label="Date" prop="date">
@@ -149,11 +149,6 @@
         },
         isLoading: false,
         filePreview: null,
-        categories: [ // Sample categories data
-                { id: 1, name: 'Category 1' },
-                { id: 2, name: 'Category 2' },
-                { id: 3, name: 'Category 3' },
-            ],
             categories: [ // Sample categories data
         { id: 1, name: 'Exhibition' },
         { id: 2, name: 'Workshop' },
